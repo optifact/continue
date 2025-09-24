@@ -1,13 +1,13 @@
-From 28d53a212914c6bd8600f2464f5124d4eac8759d Mon Sep 17 00:00:00 2001
+From 1acc1c6d7afe61d66f17ead6ce4f85daa8b4f84e Mon Sep 17 00:00:00 2001
 From: Sunder Kumar <sunder-kirei@outlook.com>
-Date: Wed, 24 Sep 2025 13:48:18 +0530
+Date: Wed, 24 Sep 2025 15:37:03 +0000
 Subject: [PATCH] temp patch commit
 
 ---
  extensions/vscode/README.md                   |  59 ---
  extensions/vscode/media/icon.png              | Bin 3826 -> 6285 bytes
  extensions/vscode/media/sidebar-icon.png      | Bin 122935 -> 6285 bytes
- extensions/vscode/package.json                | 378 +++++++++---------
+ extensions/vscode/package.json                | 389 +++++++++---------
  extensions/vscode/src/commands.ts             | 116 +++---
  gui/index.html                                |   2 +-
  gui/indexConsole.html                         |   2 +-
@@ -23,7 +23,7 @@ Subject: [PATCH] temp patch commit
  .../config/sections/UserSettingsSection.tsx   |   4 +-
  gui/src/pages/gui/Chat.tsx                    |   4 +-
  .../gui/ToolCallDiv/ToolCallStatusMessage.tsx |   2 +-
- 19 files changed, 280 insertions(+), 364 deletions(-)
+ 19 files changed, 286 insertions(+), 369 deletions(-)
 
 diff --git a/extensions/vscode/README.md b/extensions/vscode/README.md
 index e78f483..e69de29 100644
@@ -2538,10 +2538,10 @@ z@5$>ZMMP?YrfU6RVE(@ox7a9xwCyPT0i;y#0^@(<PqH)JU62J`%e6S%cG1TWK5F|^
 l)!zr~St4@4pMf8~6K?2ZeB;D%b|EugI&X5W_{_Dt{|D+SE_?t0
 
 diff --git a/extensions/vscode/package.json b/extensions/vscode/package.json
-index 1000445..c69659d 100644
+index 1000445..a0fdf0b 100644
 --- a/extensions/vscode/package.json
 +++ b/extensions/vscode/package.json
-@@ -1,27 +1,11 @@
+@@ -1,27 +1,12 @@
  {
 -  "name": "continue",
 +  "name": "Zodeve",
@@ -2552,6 +2552,7 @@ index 1000445..c69659d 100644
 -    "type": "git",
 -    "url": "https://github.com/continuedev/continue"
 -  },
++  "publisher": "zodeve",
 +  "version": "1.0.0",
    "extensionKind": [
      "ui",
@@ -2571,7 +2572,7 @@ index 1000445..c69659d 100644
    "engines": {
      "vscode": "^1.70.0",
      "node": ">=20.19.0"
-@@ -84,64 +68,64 @@
+@@ -84,64 +69,64 @@
        }
      ],
      "configuration": {
@@ -2649,7 +2650,7 @@ index 1000445..c69659d 100644
            "type": "number",
            "default": 60,
            "description": "The period of time in minutes between automatic syncs."
-@@ -150,431 +134,431 @@
+@@ -150,431 +135,431 @@
      },
      "commands": [
        {
@@ -3023,14 +3024,16 @@ index 1000445..c69659d 100644
 +        "command": "zodeve.quickEditHistoryUp",
          "mac": "up",
          "key": "up",
-         "when": "false && continue.quickEditHistoryFocused"
+-        "when": "false && continue.quickEditHistoryFocused"
++        "when": "false && zodeve.quickEditHistoryFocused"
        },
        {
 -        "command": "continue.quickEditHistoryDown",
 +        "command": "zodeve.quickEditHistoryDown",
          "mac": "down",
          "key": "down",
-         "when": "false && continue.quickEditHistoryFocused"
+-        "when": "false && continue.quickEditHistoryFocused"
++        "when": "false && zodeve.quickEditHistoryFocused"
        },
        {
 -        "command": "continue.acceptVerticalDiffBlock",
@@ -3096,25 +3099,29 @@ index 1000445..c69659d 100644
 -        "command": "continue.nextEditWindow.hideNextEditSuggestion",
 +        "command": "zodeve.nextEditWindow.hideNextEditSuggestion",
          "key": "escape",
-         "when": "editorTextFocus && nextEditWindowActive && !continue.jumpDecorationVisible"
+-        "when": "editorTextFocus && nextEditWindowActive && !continue.jumpDecorationVisible"
++        "when": "editorTextFocus && nextEditWindowActive && !zodeve.jumpDecorationVisible"
        },
        {
 -        "command": "continue.nextEditWindow.acceptNextEditSuggestion",
 +        "command": "zodeve.nextEditWindow.acceptNextEditSuggestion",
          "key": "tab",
-         "when": "editorTextFocus && nextEditWindowActive && !continue.jumpDecorationVisible"
+-        "when": "editorTextFocus && nextEditWindowActive && !continue.jumpDecorationVisible"
++        "when": "editorTextFocus && nextEditWindowActive && !zodeve.jumpDecorationVisible"
        },
        {
 -        "command": "continue.acceptJump",
 +        "command": "zodeve.acceptJump",
          "key": "tab",
-         "when": "editorTextFocus && continue.jumpDecorationVisible"
+-        "when": "editorTextFocus && continue.jumpDecorationVisible"
++        "when": "editorTextFocus && zodeve.jumpDecorationVisible"
        },
        {
 -        "command": "continue.rejectJump",
 +        "command": "zodeve.rejectJump",
          "key": "escape",
-         "when": "editorTextFocus && continue.jumpDecorationVisible"
+-        "when": "editorTextFocus && continue.jumpDecorationVisible"
++        "when": "editorTextFocus && zodeve.jumpDecorationVisible"
        }
      ],
      "submenus": [
@@ -3239,7 +3246,7 @@ index 1000445..c69659d 100644
            "group": "navigation@top"
          }
        ]
-@@ -582,25 +566,25 @@
+@@ -582,25 +567,25 @@
      "viewsContainers": {
        "activitybar": [
          {
@@ -3264,24 +3271,25 @@ index 1000445..c69659d 100644
 +      "Zodeve": [
          {
            "type": "webview",
--          "id": "continue.continueGUIView",
+           "id": "continue.continueGUIView",
 -          "name": "Continue",
-+          "id": "zodeve.continueGUIView",
 +          "name": "Zodeve",
            "icon": "media/sidebar-icon.png",
            "visibility": "visible"
          }
-@@ -608,8 +592,8 @@
-       "continueConsole": [
+@@ -609,10 +594,10 @@
          {
            "type": "webview",
--          "id": "continue.continueConsoleView",
+           "id": "continue.continueConsoleView",
 -          "name": "Continue Console",
-+          "id": "zodeve.continueConsoleView",
 +          "name": "Zodeve Console",
            "icon": "$(window)",
            "visibility": "visible",
-           "when": "config.continue.enableConsole"
+-          "when": "config.continue.enableConsole"
++          "when": "config.zodeve.enableConsole"
+         }
+       ]
+     },
 diff --git a/extensions/vscode/src/commands.ts b/extensions/vscode/src/commands.ts
 index 2efb25f..7ee1ad5 100644
 --- a/extensions/vscode/src/commands.ts
@@ -4000,5 +4008,5 @@ index 4a88fd7..dcb6e8b 100644
    );
  }
 -- 
-2.50.1.windows.1
+2.39.5
 

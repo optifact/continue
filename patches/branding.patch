@@ -1,0 +1,346 @@
+diff --git a/gui/index.html b/gui/index.html
+index f54eae8..b3e4058 100644
+--- a/gui/index.html
++++ b/gui/index.html
+@@ -4,7 +4,7 @@
+     <meta charset="UTF-8" />
+     <link rel="icon" type="image/svg+xml" href="/play_button.png" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+-    <title>Continue</title>
++    <title>Zodeve Agent</title>
+   </head>
+   <body>
+     <div id="root"></div>
+diff --git a/gui/indexConsole.html b/gui/indexConsole.html
+index aaa6990..7c67825 100644
+--- a/gui/indexConsole.html
++++ b/gui/indexConsole.html
+@@ -4,7 +4,7 @@
+     <meta charset="UTF-8" />
+     <link rel="icon" type="image/svg+xml" href="/play_button.png" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+-    <title>Continue</title>
++    <title>Zodeve Agent</title>
+   </head>
+   <body>
+     <div id="root"></div>
+diff --git a/gui/src/components/AssistantAndOrgListbox/index.tsx b/gui/src/components/AssistantAndOrgListbox/index.tsx
+index 5629df5..770fead 100644
+--- a/gui/src/components/AssistantAndOrgListbox/index.tsx
++++ b/gui/src/components/AssistantAndOrgListbox/index.tsx
+@@ -279,7 +279,7 @@ export function AssistantAndOrgListbox({
+                     <span className="text-2xs">Reload</span>
+                   </div>
+                 </Button>
+-                {session ? (
++                {/* {session ? (
+                   <Button
+                     onClick={(e) => {
+                       e.stopPropagation();
+@@ -311,7 +311,7 @@ export function AssistantAndOrgListbox({
+                       <span className="text-2xs">Log in</span>
+                     </div>
+                   </Button>
+-                )}
++                )} */}
+ 
+                 <Divider className="!mt-0" />
+               </div>
+diff --git a/gui/src/components/History/index.tsx b/gui/src/components/History/index.tsx
+index f997c6c..afa870b 100644
+--- a/gui/src/components/History/index.tsx
++++ b/gui/src/components/History/index.tsx
+@@ -217,12 +217,7 @@ export function History() {
+           className="text-description text-2xs"
+           data-testid="history-sessions-note"
+         >
+-          Chat history is saved to{" "}
+-          <span className="italic">
+-            {platform === "windows"
+-              ? "%USERPROFILE%/.continue"
+-              : "~/.continue/sessions"}
+-          </span>
++          Chat history will be saved locally
+         </span>
+       </div>
+     </div>
+diff --git a/gui/src/components/OnboardingCard/OnboardingCard.tsx b/gui/src/components/OnboardingCard/OnboardingCard.tsx
+index b513191..e072e55 100644
+--- a/gui/src/components/OnboardingCard/OnboardingCard.tsx
++++ b/gui/src/components/OnboardingCard/OnboardingCard.tsx
+@@ -58,7 +58,7 @@ export function OnboardingCard({
+                 Free trial completed
+               </h4>
+               <span className="text-xs">
+-                To keep using Continue, select an option below to setup your
++                To keep using Zodeve-Agent, select an option below to setup your
+                 models
+               </span>
+             </Alert>
+diff --git a/gui/src/components/OnboardingCard/components/OnboardingCardLanding.tsx b/gui/src/components/OnboardingCard/components/OnboardingCardLanding.tsx
+index 3fca53a..284cd6b 100644
+--- a/gui/src/components/OnboardingCard/components/OnboardingCardLanding.tsx
++++ b/gui/src/components/OnboardingCard/components/OnboardingCardLanding.tsx
+@@ -33,7 +33,7 @@ export function OnboardingCardLanding({
+         void dispatch(selectFirstHubProfile());
+ 
+         ideMessenger.post("showTutorial", undefined);
+-        ideMessenger.post("showToast", ["info", "🎉 Welcome to Continue!"]);
++        ideMessenger.post("showToast", ["info", "🎉 Welcome to Zodeve-Agent!"]);
+       }
+     });
+   }
+@@ -57,14 +57,14 @@ export function OnboardingCardLanding({
+       {pastFreeTrialLimit ? (
+         <>
+           <p className="xs:w-3/4 w-full text-sm">
+-            You've reached the free trial limit. Visit the Continue Platform to
+-            select a Coding Agent.
++            You've reached the free trial limit. Visit the Zodeve-Agent Platform
++            to select a Coding Agent.
+           </p>
+           <Button
+             onClick={openPastFreeTrialOnboarding}
+             className="mt-4 grid w-full grid-flow-col items-center gap-2"
+           >
+-            Go to Continue Platform
++            Go to Zodeve-Agent Platform
+           </Button>
+         </>
+       ) : (
+@@ -93,7 +93,7 @@ export function OnboardingCardLanding({
+             onClick={onGetStarted}
+             className="mt-4 grid w-full grid-flow-col items-center gap-2"
+           >
+-            Log in to Continue Hub
++            Log in to Zodeve-Agent Hub
+           </Button>
+         </>
+       )}
+diff --git a/gui/src/pages/config/configTabs.tsx b/gui/src/pages/config/configTabs.tsx
+index 3739d6d..62af4e1 100644
+--- a/gui/src/pages/config/configTabs.tsx
++++ b/gui/src/pages/config/configTabs.tsx
+@@ -100,18 +100,18 @@ export const topTabSections: TabSection[] = [
+           <BotIcon className="xs:h-4 xs:w-4 h-3 w-3 flex-shrink-0" size={16} />
+         ),
+       },
+-      {
+-        id: "organizations",
+-        label: "Organizations",
+-        component: (
+-          <ConfigSection>
+-            <OrganizationsSection />
+-          </ConfigSection>
+-        ),
+-        icon: (
+-          <BuildingOfficeIcon className="xs:h-4 xs:w-4 h-3 w-3 flex-shrink-0" />
+-        ),
+-      },
++      // {
++      //   id: "organizations",
++      //   label: "Organizations",
++      //   component: (
++      //     <ConfigSection>
++      //       <OrganizationsSection />
++      //     </ConfigSection>
++      //   ),
++      //   icon: (
++      //     <BuildingOfficeIcon className="xs:h-4 xs:w-4 h-3 w-3 flex-shrink-0" />
++      //   ),
++      // },
+     ],
+   },
+   {
+diff --git a/gui/src/pages/config/features/indexing/IndexingProgress.tsx b/gui/src/pages/config/features/indexing/IndexingProgress.tsx
+index f2564e0..3300438 100644
+--- a/gui/src/pages/config/features/indexing/IndexingProgress.tsx
++++ b/gui/src/pages/config/features/indexing/IndexingProgress.tsx
+@@ -68,7 +68,7 @@ function IndexingProgress() {
+               "Your index appears corrupted. We recommend clearing and rebuilding it, " +
+               "which may take time for large codebases.\n\n" +
+               "For a faster rebuild without clearing data, press 'Shift + Command + P' to open " +
+-              "the Command Palette, and type out 'Continue: Force Codebase Re-Indexing'"
++              "the Command Palette, and type out 'Zodeve: Force Codebase Re-Indexing'"
+             }
+             onConfirm={() => {
+               posthog.capture("rebuild_index_clicked");
+diff --git a/gui/src/pages/config/features/keyboard/KeyboardShortcuts.tsx b/gui/src/pages/config/features/keyboard/KeyboardShortcuts.tsx
+index 8c9bdd8..4c791d4 100644
+--- a/gui/src/pages/config/features/keyboard/KeyboardShortcuts.tsx
++++ b/gui/src/pages/config/features/keyboard/KeyboardShortcuts.tsx
+@@ -36,7 +36,7 @@ const vscodeShortcuts: Omit<KeyboardShortcutProps, "isEven">[] = [
+   {
+     shortcut: "cmd L",
+     description:
+-      "New Chat / New Chat With Selected Code / Close Continue Sidebar If Chat Already In Focus",
++      "New Chat / New Chat With Selected Code / Close Zodeve-Agent Sidebar If Chat Already In Focus",
+   },
+   {
+     shortcut: "cmd backspace",
+@@ -49,7 +49,7 @@ const vscodeShortcuts: Omit<KeyboardShortcutProps, "isEven">[] = [
+   {
+     shortcut: "cmd shift L",
+     description:
+-      "Focus Current Chat / Add Selected Code To Current Chat / Close Continue Sidebar If Chat Already In Focus",
++      "Focus Current Chat / Add Selected Code To Current Chat / Close Zodeve-Agent Sidebar If Chat Already In Focus",
+   },
+   {
+     shortcut: "cmd shift R",
+@@ -97,7 +97,7 @@ const jetbrainsShortcuts: Omit<KeyboardShortcutProps, "isEven">[] = [
+   {
+     shortcut: "cmd J",
+     description:
+-      "New Chat / New Chat With Selected Code / Close Continue Sidebar If Chat Already In Focus",
++      "New Chat / New Chat With Selected Code / Close Zodeve-Agent Sidebar If Chat Already In Focus",
+   },
+   {
+     shortcut: "cmd backspace",
+@@ -110,7 +110,7 @@ const jetbrainsShortcuts: Omit<KeyboardShortcutProps, "isEven">[] = [
+   {
+     shortcut: "cmd shift J",
+     description:
+-      "Focus Current Chat / Add Selected Code To Current Chat / Close Continue Sidebar If Chat Already In Focus",
++      "Focus Current Chat / Add Selected Code To Current Chat / Close Zodeve-Agent Sidebar If Chat Already In Focus",
+   },
+   {
+     shortcut: "cmd shift backspace",
+diff --git a/gui/src/pages/config/index.tsx b/gui/src/pages/config/index.tsx
+index 4e65456..5ca5792 100644
+--- a/gui/src/pages/config/index.tsx
++++ b/gui/src/pages/config/index.tsx
+@@ -75,9 +75,9 @@ function ConfigPage() {
+             />
+           ))}
+ 
+-          <Divider />
++          {/* <Divider /> */}
+ 
+-          <AccountDropdown />
++          {/* <AccountDropdown /> */}
+         </div>
+       </div>
+ 
+diff --git a/gui/src/pages/config/sections/HelpSection.tsx b/gui/src/pages/config/sections/HelpSection.tsx
+index 577872e..d93609c 100644
+--- a/gui/src/pages/config/sections/HelpSection.tsx
++++ b/gui/src/pages/config/sections/HelpSection.tsx
+@@ -52,7 +52,7 @@ const vscodeShortcuts: Omit<KeyboardShortcutProps, "isEven">[] = [
+   {
+     shortcut: "cmd L",
+     description:
+-      "New Chat / New Chat With Selected Code / Close Continue Sidebar If Chat Already In Focus",
++      "New Chat / New Chat With Selected Code / Close Zodeve-Agent Sidebar If Chat Already In Focus",
+   },
+   {
+     shortcut: "cmd backspace",
+@@ -65,7 +65,7 @@ const vscodeShortcuts: Omit<KeyboardShortcutProps, "isEven">[] = [
+   {
+     shortcut: "cmd shift L",
+     description:
+-      "Focus Current Chat / Add Selected Code To Current Chat / Close Continue Sidebar If Chat Already In Focus",
++      "Focus Current Chat / Add Selected Code To Current Chat / Close Zodeve-Agent Sidebar If Chat Already In Focus",
+   },
+   {
+     shortcut: "cmd shift R",
+@@ -113,7 +113,7 @@ const jetbrainsShortcuts: Omit<KeyboardShortcutProps, "isEven">[] = [
+   {
+     shortcut: "cmd J",
+     description:
+-      "New Chat / New Chat With Selected Code / Close Continue Sidebar If Chat Already In Focus",
++      "New Chat / New Chat With Selected Code / Close Zodeve-Agent Sidebar If Chat Already In Focus",
+   },
+   {
+     shortcut: "cmd backspace",
+@@ -126,7 +126,7 @@ const jetbrainsShortcuts: Omit<KeyboardShortcutProps, "isEven">[] = [
+   {
+     shortcut: "cmd shift J",
+     description:
+-      "Focus Current Chat / Add Selected Code To Current Chat / Close Continue Sidebar If Chat Already In Focus",
++      "Focus Current Chat / Add Selected Code To Current Chat / Close Zodeve-Agent Sidebar If Chat Already In Focus",
+   },
+   {
+     shortcut: "cmd shift backspace",
+@@ -175,12 +175,12 @@ export function HelpSection() {
+       <ConfigHeader title="Help Center" />
+       <div className="space-y-6">
+         {/* Resources */}
+-        <div>
++        {/* <div>
+           <h3 className="mb-3 text-base font-medium">Resources</h3>
+           <Card className="!p-0">
+             <div className="flex flex-col">
+               <ConfigRow
+-                title="Continue Hub"
++                title="Zodeve-Agent Hub"
+                 description="Visit hub.continue.dev to explore custom agents and blocks"
+                 icon={LinkIcon}
+                 onClick={() =>
+@@ -190,7 +190,7 @@ export function HelpSection() {
+ 
+               <ConfigRow
+                 title="Documentation"
+-                description="Learn how to configure and use Continue"
++                description="Learn how to configure and use Zodeve-Agent"
+                 icon={LinkIcon}
+                 onClick={() =>
+                   ideMessenger.post("openUrl", "https://docs.continue.dev/")
+@@ -219,7 +219,7 @@ export function HelpSection() {
+               />
+             </div>
+           </Card>
+-        </div>
++        </div> */}
+ 
+         {/* Tools */}
+         <div>
+diff --git a/gui/src/pages/config/sections/UserSettingsSection.tsx b/gui/src/pages/config/sections/UserSettingsSection.tsx
+index afa56ac..e344f73 100644
+--- a/gui/src/pages/config/sections/UserSettingsSection.tsx
++++ b/gui/src/pages/config/sections/UserSettingsSection.tsx
+@@ -184,7 +184,7 @@ export function UserSettingsSection() {
+                 <UserSetting
+                   type="toggle"
+                   title="Allow Anonymous Telemetry"
+-                  description="Allows Continue to send anonymous telemetry."
++                  description="Allows Zodeve-Agent to send anonymous telemetry."
+                   value={allowAnonymousTelemetry}
+                   disabled={disableTelemetryToggle}
+                   onChange={(value) =>
+@@ -307,7 +307,7 @@ export function UserSettingsSection() {
+                   <UserSetting
+                     type="toggle"
+                     title="Only use system message tools"
+-                    description=" Continue will not attempt to use native tool calling and will only use system message tools."
++                    description=" Zodeve-Agent will not attempt to use native tool calling and will only use system message tools."
+                     value={onlyUseSystemMessageTools}
+                     onChange={(value) =>
+                       handleUpdate({ onlyUseSystemMessageTools: value })
+diff --git a/gui/src/pages/gui/Chat.tsx b/gui/src/pages/gui/Chat.tsx
+index 4be689d..4314b46 100644
+--- a/gui/src/pages/gui/Chat.tsx
++++ b/gui/src/pages/gui/Chat.tsx
+@@ -448,9 +448,7 @@ export function Chat() {
+           </div>
+           <FatalErrorIndicator />
+           {!hasDismissedExploreDialog && <ExploreDialogWatcher />}
+-          {history.length === 0 && (
+-            <EmptyChatBody showOnboardingCard={onboardingCard.show} />
+-          )}
++          {history.length === 0 && <EmptyChatBody showOnboardingCard={false} />}
+         </div>
+       </div>
+     </>
+diff --git a/gui/src/pages/gui/ToolCallDiv/ToolCallStatusMessage.tsx b/gui/src/pages/gui/ToolCallDiv/ToolCallStatusMessage.tsx
+index 4a88fd7..dcb6e8b 100644
+--- a/gui/src/pages/gui/ToolCallDiv/ToolCallStatusMessage.tsx
++++ b/gui/src/pages/gui/ToolCallDiv/ToolCallStatusMessage.tsx
+@@ -56,7 +56,7 @@ export function ToolCallStatusMessage({
+       className="text-description line-clamp-4 min-w-0 break-all"
+       data-testid="tool-call-title"
+     >
+-      {`Continue ${intro} ${message}`}
++      {`Zodeve-Agent ${intro} ${message}`}
+     </div>
+   );
+ }

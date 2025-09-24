@@ -1,0 +1,1102 @@
+diff --git a/extensions/vscode/media/icon.png b/extensions/vscode/media/icon.png
+index d8f9f16..900a031 100644
+Binary files a/extensions/vscode/media/icon.png and b/extensions/vscode/media/icon.png differ
+diff --git a/extensions/vscode/media/sidebar-icon.png b/extensions/vscode/media/sidebar-icon.png
+index 4f41d9d..900a031 100644
+Binary files a/extensions/vscode/media/sidebar-icon.png and b/extensions/vscode/media/sidebar-icon.png differ
+diff --git a/extensions/vscode/package.json b/extensions/vscode/package.json
+index 1000445..e771741 100644
+--- a/extensions/vscode/package.json
++++ b/extensions/vscode/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "continue",
++  "name": "Zodeve",
+   "icon": "media/icon.png",
+   "author": "Continue Dev, Inc",
+   "version": "1.3.9",
+@@ -21,7 +21,7 @@
+   "displayName": "Continue - open-source AI code agent",
+   "pricing": "Free",
+   "description": "The leading open-source AI code agent",
+-  "publisher": "Continue",
++  "publisher": "Zodeve",
+   "engines": {
+     "vscode": "^1.70.0",
+     "node": ">=20.19.0"
+@@ -84,64 +84,64 @@
+       }
+     ],
+     "configuration": {
+-      "title": "Continue",
++      "title": "Zodeve",
+       "properties": {
+-        "continue.telemetryEnabled": {
++        "zodeve.telemetryEnabled": {
+           "type": "boolean",
+           "default": true,
+           "markdownDescription": "Continue collects anonymous usage data, cleaned of PII, to help us improve the product for our users. Read more  at [continue.dev › Telemetry](https://docs.continue.dev/telemetry)."
+         },
+-        "continue.showInlineTip": {
++        "zodeve.showInlineTip": {
+           "type": "boolean",
+           "default": true,
+           "description": "Show inline suggestion to use the Continue keyboard shortcuts (e.g. \"Cmd/Ctrl L to select code, Cmd/Ctrl I to edit\")."
+         },
+-        "continue.disableQuickFix": {
++        "zodeve.disableQuickFix": {
+           "type": "boolean",
+           "default": false,
+           "description": "Disable the quick fix feature."
+         },
+-        "continue.enableQuickActions": {
++        "zodeve.enableQuickActions": {
+           "type": "boolean",
+           "default": false,
+           "markdownDescription": "Enable the experimental Quick Actions feature. Read our walkthrough to learn about configuration and how to share feedback: [continue.dev › Walkthrough: Quick Actions (experimental)](https://docs.continue.dev/customize/deep-dives/vscode-actions#quick-actions)"
+         },
+-        "continue.enableTabAutocomplete": {
++        "zodeve.enableTabAutocomplete": {
+           "type": "boolean",
+           "default": true,
+           "markdownDescription": "Enable Continue's tab autocomplete feature. Read our walkthrough to learn about configuration and how to share feedback: [continue.dev › Walkthrough: Tab Autocomplete (beta)](https://docs.continue.dev/features/tab-autocomplete)"
+         },
+-        "continue.enableNextEdit": {
++        "zodeve.enableNextEdit": {
+           "type": "boolean",
+           "default": true,
+           "markdownDescription": "Enable Continue's next edit feature. Read our docs to learn about configuration and how to share feedback: [continue.dev › Features › Autocomplete › Next Edit (experimental)](https://docs.continue.dev/features/autocomplete/next-edit)"
+         },
+-        "continue.pauseTabAutocompleteOnBattery": {
++        "zodeve.pauseTabAutocompleteOnBattery": {
+           "type": "boolean",
+           "default": false,
+           "markdownDescription": "Pause Continue's tab autocomplete feature when your battery is low."
+         },
+-        "continue.pauseCodebaseIndexOnStart": {
++        "zodeve.pauseCodebaseIndexOnStart": {
+           "type": "boolean",
+           "default": false,
+           "markdownDescription": "Pause Continue's codebase index on start."
+         },
+-        "continue.enableConsole": {
++        "zodeve.enableConsole": {
+           "type": "boolean",
+           "default": false,
+           "markdownDescription": "Enable a console to log and explore model inputs and outputs. It can be found in the bottom panel."
+         },
+-        "continue.remoteConfigServerUrl": {
++        "zodeve.remoteConfigServerUrl": {
+           "type": "string",
+           "default": null,
+           "markdownDescription": "If your team is set up to use shared configuration, enter the server URL here and your user token below to enable automatic syncing."
+         },
+-        "continue.userToken": {
++        "zodeve.userToken": {
+           "type": "string",
+           "default": null,
+           "markdownDescription": "If your team is set up to use shared configuration, enter your user token here and your server URL above to enable automatic syncing."
+         },
+-        "continue.remoteConfigSyncPeriod": {
++        "zodeve.remoteConfigSyncPeriod": {
+           "type": "number",
+           "default": 60,
+           "description": "The period of time in minutes between automatic syncs."
+@@ -150,431 +150,431 @@
+     },
+     "commands": [
+       {
+-        "command": "continue.applyCodeFromChat",
+-        "category": "Continue",
++        "command": "zodeve.applyCodeFromChat",
++        "category": "Zodeve",
+         "title": "Apply code from chat",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.acceptDiff",
+-        "category": "Continue",
++        "command": "zodeve.acceptDiff",
++        "category": "Zodeve",
+         "title": "Accept Diff",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.rejectDiff",
+-        "category": "Continue",
++        "command": "zodeve.rejectDiff",
++        "category": "Zodeve",
+         "title": "Reject Diff",
+-        "group": "Continue",
++        "group": "Zodeve",
+         "icon": "$(stop)"
+       },
+       {
+-        "command": "continue.acceptVerticalDiffBlock",
+-        "category": "Continue",
++        "command": "zodeve.acceptVerticalDiffBlock",
++        "category": "Zodeve",
+         "title": "Accept Vertical Diff Block",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.rejectVerticalDiffBlock",
+-        "category": "Continue",
++        "command": "zodeve.rejectVerticalDiffBlock",
++        "category": "Zodeve",
+         "title": "Reject Vertical Diff Block",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.focusEdit",
+-        "category": "Continue",
++        "command": "zodeve.focusEdit",
++        "category": "Zodeve",
+         "title": "Add to Edit",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.focusContinueInput",
+-        "category": "Continue",
++        "command": "zodeve.focusContinueInput",
++        "category": "Zodeve",
+         "title": "Add Highlighted Code to Context and Clear Chat",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.focusContinueInputWithoutClear",
+-        "category": "Continue",
++        "command": "zodeve.focusContinueInputWithoutClear",
++        "category": "Zodeve",
+         "title": "Add to Chat",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.debugTerminal",
+-        "category": "Continue",
++        "command": "zodeve.debugTerminal",
++        "category": "Zodeve",
+         "title": "Debug Terminal",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.exitEditMode",
+-        "category": "Continue",
++        "command": "zodeve.exitEditMode",
++        "category": "Zodeve",
+         "title": "Exit Edit Mode",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.openConfigPage",
+-        "category": "Continue",
++        "command": "zodeve.openConfigPage",
++        "category": "Zodeve",
+         "title": "Open Settings",
+         "icon": "$(gear)",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.toggleTabAutocompleteEnabled",
+-        "category": "Continue",
++        "command": "zodeve.toggleTabAutocompleteEnabled",
++        "category": "Zodeve",
+         "title": "Toggle Autocomplete Enabled",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.forceAutocomplete",
++        "command": "zodeve.forceAutocomplete",
+         "title": "Continue: Force Autocomplete",
+-        "category": "Continue"
++        "category": "Zodeve"
+       },
+       {
+-        "command": "continue.selectFilesAsContext",
+-        "category": "Continue",
++        "command": "zodeve.selectFilesAsContext",
++        "category": "Zodeve",
+         "title": "Select Files as Context",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.newSession",
+-        "category": "Continue",
++        "command": "zodeve.newSession",
++        "category": "Zodeve",
+         "title": "New Session",
+         "icon": "$(add)",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.viewHistory",
+-        "category": "Continue",
++        "command": "zodeve.viewHistory",
++        "category": "Zodeve",
+         "title": "View History",
+         "icon": "$(history)",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.viewLogs",
+-        "category": "Continue",
++        "command": "zodeve.viewLogs",
++        "category": "Zodeve",
+         "title": "View History",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.clearConsole",
+-        "category": "Continue",
++        "command": "zodeve.clearConsole",
++        "category": "Zodeve",
+         "title": "Clear Console",
+         "icon": "$(clear-all)",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.navigateTo",
+-        "category": "Continue",
++        "command": "zodeve.navigateTo",
++        "category": "Zodeve",
+         "title": "Navigate to a path",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.writeCommentsForCode",
+-        "category": "Continue",
++        "command": "zodeve.writeCommentsForCode",
++        "category": "Zodeve",
+         "title": "Write Comments for this Code",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.writeDocstringForCode",
+-        "category": "Continue",
++        "command": "zodeve.writeDocstringForCode",
++        "category": "Zodeve",
+         "title": "Write a Docstring for this Code",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.fixCode",
+-        "category": "Continue",
++        "command": "zodeve.fixCode",
++        "category": "Zodeve",
+         "title": "Fix this Code",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.optimizeCode",
+-        "category": "Continue",
++        "command": "zodeve.optimizeCode",
++        "category": "Zodeve",
+         "title": "Optimize this Code",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.fixGrammar",
+-        "category": "Continue",
++        "command": "zodeve.fixGrammar",
++        "category": "Zodeve",
+         "title": "Fix Grammar / Spelling",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.codebaseForceReIndex",
+-        "category": "Continue",
++        "command": "zodeve.codebaseForceReIndex",
++        "category": "Zodeve",
+         "title": "Codebase Force Re-Index",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.rebuildCodebaseIndex",
+-        "category": "Continue",
++        "command": "zodeve.rebuildCodebaseIndex",
++        "category": "Zodeve",
+         "title": "Rebuild codebase index",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.docsIndex",
+-        "category": "Continue",
++        "command": "zodeve.docsIndex",
++        "category": "Zodeve",
+         "title": "Docs Index",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.docsReIndex",
+-        "category": "Continue",
++        "command": "zodeve.docsReIndex",
++        "category": "Zodeve",
+         "title": "Docs Force Re-Index",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.focusContinueInput",
+-        "category": "Continue",
++        "command": "zodeve.focusContinueInput",
++        "category": "Zodeve",
+         "title": "Focus Continue Chat",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.enterEnterpriseLicenseKey",
+-        "category": "Continue",
++        "command": "zodeve.enterEnterpriseLicenseKey",
++        "category": "Zodeve",
+         "title": "Enter Enterprise License Key",
+-        "group": "Continue"
++        "group": "Zodeve"
+       },
+       {
+-        "command": "continue.toggleNextEditEnabled",
++        "command": "zodeve.toggleNextEditEnabled",
+         "title": "Continue: Toggle Next Edit"
+       },
+       {
+-        "command": "continue.nextEditWindow.hideNextEditSuggestion",
+-        "category": "Continue",
++        "command": "zodeve.nextEditWindow.hideNextEditSuggestion",
++        "category": "Zodeve",
+         "title": "Hide Next Edit Suggestion"
+       },
+       {
+-        "command": "continue.nextEditWindow.acceptNextEditSuggestion",
+-        "category": "Continue",
++        "command": "zodeve.nextEditWindow.acceptNextEditSuggestion",
++        "category": "Zodeve",
+         "title": "Accept Next Edit Suggestion"
+       },
+       {
+-        "command": "continue.forceNextEdit",
+-        "category": "Continue",
++        "command": "zodeve.forceNextEdit",
++        "category": "Zodeve",
+         "title": "Continue: Force Next Edit"
+       },
+       {
+-        "command": "continue.acceptJump",
+-        "category": "Continue",
++        "command": "zodeve.acceptJump",
++        "category": "Zodeve",
+         "title": "Continue: Accept Jump Suggestion"
+       },
+       {
+-        "command": "continue.rejectJump",
+-        "category": "Continue",
++        "command": "zodeve.rejectJump",
++        "category": "Zodeve",
+         "title": "Continue: Reject Jump Suggestion"
+       },
+       {
+-        "command": "continue.generateRule",
+-        "category": "Continue",
++        "command": "zodeve.generateRule",
++        "category": "Zodeve",
+         "title": "Generate Rule",
+-        "group": "Continue"
++        "group": "Zodeve"
+       }
+     ],
+     "keybindings": [
+       {
+-        "command": "continue.focusContinueInput",
++        "command": "zodeve.focusContinueInput",
+         "mac": "cmd+l",
+         "key": "ctrl+l"
+       },
+       {
+-        "command": "continue.focusContinueInputWithoutClear",
++        "command": "zodeve.focusContinueInputWithoutClear",
+         "mac": "cmd+shift+l",
+         "key": "ctrl+shift+l"
+       },
+       {
+-        "command": "continue.acceptDiff",
++        "command": "zodeve.acceptDiff",
+         "mac": "shift+cmd+enter",
+         "key": "shift+ctrl+enter",
+-        "when": "continue.diffVisible"
++        "when": "zodeve.diffVisible"
+       },
+       {
+-        "command": "continue.rejectDiff",
++        "command": "zodeve.rejectDiff",
+         "mac": "shift+cmd+backspace",
+         "key": "shift+ctrl+backspace",
+-        "when": "continue.diffVisible"
++        "when": "zodeve.diffVisible"
+       },
+       {
+-        "command": "continue.rejectDiff",
++        "command": "zodeve.rejectDiff",
+         "mac": "cmd+z",
+         "key": "ctrl+z",
+-        "when": "continue.diffVisible"
++        "when": "zodeve.diffVisible"
+       },
+       {
+-        "command": "continue.quickEditHistoryUp",
++        "command": "zodeve.quickEditHistoryUp",
+         "mac": "up",
+         "key": "up",
+         "when": "false && continue.quickEditHistoryFocused"
+       },
+       {
+-        "command": "continue.quickEditHistoryDown",
++        "command": "zodeve.quickEditHistoryDown",
+         "mac": "down",
+         "key": "down",
+         "when": "false && continue.quickEditHistoryFocused"
+       },
+       {
+-        "command": "continue.acceptVerticalDiffBlock",
++        "command": "zodeve.acceptVerticalDiffBlock",
+         "mac": "alt+cmd+y",
+         "key": "alt+ctrl+y"
+       },
+       {
+-        "command": "continue.rejectVerticalDiffBlock",
++        "command": "zodeve.rejectVerticalDiffBlock",
+         "mac": "alt+cmd+n",
+         "key": "alt+ctrl+n"
+       },
+       {
+-        "command": "continue.focusEdit",
++        "command": "zodeve.focusEdit",
+         "title": "Edit code with natural language",
+         "mac": "cmd+i",
+         "key": "ctrl+i"
+       },
+       {
+-        "command": "continue.exitEditMode",
++        "command": "zodeve.exitEditMode",
+         "mac": "escape",
+         "key": "escape",
+-        "when": "continue.inEditMode && editorFocus"
++        "when": "zodeve.inEditMode && editorFocus"
+       },
+       {
+-        "command": "continue.debugTerminal",
++        "command": "zodeve.debugTerminal",
+         "mac": "cmd+shift+r",
+         "key": "ctrl+shift+r"
+       },
+       {
+-        "command": "continue.toggleTabAutocompleteEnabled",
++        "command": "zodeve.toggleTabAutocompleteEnabled",
+         "mac": "cmd+k cmd+a",
+         "key": "ctrl+k ctrl+a",
+         "when": "!terminalFocus"
+       },
+       {
+-        "command": "continue.forceAutocomplete",
++        "command": "zodeve.forceAutocomplete",
+         "key": "ctrl+alt+space",
+         "mac": "cmd+alt+space",
+         "when": "editorTextFocus && !editorHasSelection && !editorReadOnly && !inSnippetMode"
+       },
+       {
+-        "command": "continue.applyCodeFromChat",
++        "command": "zodeve.applyCodeFromChat",
+         "mac": "alt+a",
+         "key": "alt+a"
+       },
+       {
+-        "command": "continue.toggleNextEditEnabled",
++        "command": "zodeve.toggleNextEditEnabled",
+         "key": "ctrl+k ctrl+n",
+         "mac": "cmd+k cmd+n",
+         "when": "editorTextFocus"
+       },
+       {
+-        "command": "continue.nextEditWindow.hideNextEditSuggestion",
++        "command": "zodeve.nextEditWindow.hideNextEditSuggestion",
+         "key": "escape",
+         "when": "editorTextFocus && nextEditWindowActive && !continue.jumpDecorationVisible"
+       },
+       {
+-        "command": "continue.nextEditWindow.acceptNextEditSuggestion",
++        "command": "zodeve.nextEditWindow.acceptNextEditSuggestion",
+         "key": "tab",
+         "when": "editorTextFocus && nextEditWindowActive && !continue.jumpDecorationVisible"
+       },
+       {
+-        "command": "continue.acceptJump",
++        "command": "zodeve.acceptJump",
+         "key": "tab",
+         "when": "editorTextFocus && continue.jumpDecorationVisible"
+       },
+       {
+-        "command": "continue.rejectJump",
++        "command": "zodeve.rejectJump",
+         "key": "escape",
+         "when": "editorTextFocus && continue.jumpDecorationVisible"
+       }
+     ],
+     "submenus": [
+       {
+-        "id": "continue.continueSubMenu",
+-        "label": "Continue"
++        "id": "zodeve.continueSubMenu",
++        "label": "Zodeve"
+       }
+     ],
+     "menus": {
+       "commandPalette": [
+         {
+-          "command": "continue.focusContinueInput"
++          "command": "zodeve.focusContinueInput"
+         },
+         {
+-          "command": "continue.focusContinueInputWithoutClear"
++          "command": "zodeve.focusContinueInputWithoutClear"
+         },
+         {
+-          "command": "continue.debugTerminal"
++          "command": "zodeve.debugTerminal"
+         },
+         {
+-          "command": "continue.newSession"
++          "command": "zodeve.newSession"
+         },
+         {
+-          "command": "continue.enterEnterpriseLicenseKey"
++          "command": "zodeve.enterEnterpriseLicenseKey"
+         },
+         {
+-          "command": "continue.generateRule"
++          "command": "zodeve.generateRule"
+         }
+       ],
+       "editor/context": [
+         {
+-          "submenu": "continue.continueSubMenu",
++          "submenu": "zodeve.continueSubMenu",
+           "group": "0_acontinue"
+         }
+       ],
+       "editor/title/run": [
+         {
+-          "command": "continue.rejectDiff",
+-          "group": "Continue",
+-          "when": "continue.streamingDiff"
++          "command": "zodeve.rejectDiff",
++          "group": "Zodeve",
++          "when": "zodeve.streamingDiff"
+         }
+       ],
+-      "continue.continueSubMenu": [
++      "zodeve.continueSubMenu": [
+         {
+-          "command": "continue.focusContinueInputWithoutClear",
+-          "group": "Continue"
++          "command": "zodeve.focusContinueInputWithoutClear",
++          "group": "Zodeve"
+         },
+         {
+-          "command": "continue.focusEdit",
+-          "group": "Continue",
++          "command": "zodeve.focusEdit",
++          "group": "Zodeve",
+           "when": "!editorReadonly"
+         }
+       ],
+       "explorer/context": [
+         {
+-          "command": "continue.selectFilesAsContext",
++          "command": "zodeve.selectFilesAsContext",
+           "group": "1_debug@1"
+         }
+       ],
+       "view/title": [
+         {
+-          "command": "continue.newSession",
++          "command": "zodeve.newSession",
+           "group": "navigation@1",
+           "when": "view == continue.continueGUIView"
+         },
+         {
+-          "command": "continue.viewHistory",
++          "command": "zodeve.viewHistory",
+           "group": "navigation@2",
+           "when": "view == continue.continueGUIView"
+         },
+         {
+-          "command": "continue.openConfigPage",
++          "command": "zodeve.openConfigPage",
+           "group": "navigation@4",
+           "when": "view == continue.continueGUIView"
+         },
+         {
+-          "command": "continue.clearConsole",
++          "command": "zodeve.clearConsole",
+           "group": "navigation@1",
+           "when": "view == continue.continueConsoleView"
+         }
+       ],
+       "editor/title": [
+         {
+-          "command": "continue.newSession",
++          "command": "zodeve.newSession",
+           "group": "navigation@1",
+           "when": "activeWebviewPanelId == continue.continueGUIView"
+         },
+         {
+-          "command": "continue.viewHistory",
++          "command": "zodeve.viewHistory",
+           "group": "navigation@2",
+           "when": "activeWebviewPanelId == continue.continueGUIView"
+         }
+       ],
+       "terminal/context": [
+         {
+-          "command": "continue.debugTerminal",
++          "command": "zodeve.debugTerminal",
+           "group": "navigation@top"
+         }
+       ]
+@@ -582,25 +582,25 @@
+     "viewsContainers": {
+       "activitybar": [
+         {
+-          "id": "continue",
+-          "title": "Continue",
++          "id": "Zodeve",
++          "title": "Zodeve",
+           "icon": "media/sidebar-icon.png"
+         }
+       ],
+       "panel": [
+         {
+           "id": "continueConsole",
+-          "title": "Continue Console",
++          "title": "Zodeve Console",
+           "icon": "$(window)"
+         }
+       ]
+     },
+     "views": {
+-      "continue": [
++      "Zodeve": [
+         {
+           "type": "webview",
+-          "id": "continue.continueGUIView",
+-          "name": "Continue",
++          "id": "zodeve.continueGUIView",
++          "name": "Zodeve",
+           "icon": "media/sidebar-icon.png",
+           "visibility": "visible"
+         }
+@@ -608,8 +608,8 @@
+       "continueConsole": [
+         {
+           "type": "webview",
+-          "id": "continue.continueConsoleView",
+-          "name": "Continue Console",
++          "id": "zodeve.continueConsoleView",
++          "name": "Zodeve Console",
+           "icon": "$(window)",
+           "visibility": "visible",
+           "when": "config.continue.enableConsole"
+diff --git a/extensions/vscode/src/commands.ts b/extensions/vscode/src/commands.ts
+index 2efb25f..7ee1ad5 100644
+--- a/extensions/vscode/src/commands.ts
++++ b/extensions/vscode/src/commands.ts
+@@ -59,7 +59,7 @@ function captureCommandTelemetry(
+ 
+ function focusGUI() {
+   // focus sidebar
+-  vscode.commands.executeCommand("continue.continueGUIView.focus");
++  vscode.commands.executeCommand("zodeve.continueGUIView.focus");
+   // vscode.commands.executeCommand("workbench.action.focusAuxiliaryBar");
+ }
+ 
+@@ -156,7 +156,7 @@ const getCommandsMap: (
+   }
+ 
+   return {
+-    "continue.acceptDiff": async (newFileUri?: string, streamId?: string) => {
++    "zodeve.acceptDiff": async (newFileUri?: string, streamId?: string) => {
+       captureCommandTelemetry("acceptDiff");
+       void processDiff(
+         "accept",
+@@ -169,7 +169,7 @@ const getCommandsMap: (
+       );
+     },
+ 
+-    "continue.rejectDiff": async (newFileUri?: string, streamId?: string) => {
++    "zodeve.rejectDiff": async (newFileUri?: string, streamId?: string) => {
+       captureCommandTelemetry("rejectDiff");
+       void processDiff(
+         "reject",
+@@ -181,15 +181,15 @@ const getCommandsMap: (
+         streamId,
+       );
+     },
+-    "continue.acceptVerticalDiffBlock": (fileUri?: string, index?: number) => {
++    "zodeve.acceptVerticalDiffBlock": (fileUri?: string, index?: number) => {
+       captureCommandTelemetry("acceptVerticalDiffBlock");
+       verticalDiffManager.acceptRejectVerticalDiffBlock(true, fileUri, index);
+     },
+-    "continue.rejectVerticalDiffBlock": (fileUri?: string, index?: number) => {
++    "zodeve.rejectVerticalDiffBlock": (fileUri?: string, index?: number) => {
+       captureCommandTelemetry("rejectVerticalDiffBlock");
+       verticalDiffManager.acceptRejectVerticalDiffBlock(false, fileUri, index);
+     },
+-    "continue.quickFix": async (
++    "zodeve.quickFix": async (
+       range: vscode.Range,
+       diagnosticMessage: string,
+     ) => {
+@@ -199,14 +199,14 @@ const getCommandsMap: (
+ 
+       addCodeToContextFromRange(range, sidebar.webviewProtocol, prompt);
+ 
+-      vscode.commands.executeCommand("continue.continueGUIView.focus");
++      vscode.commands.executeCommand("zodeve.continueGUIView.focus");
+     },
+     // Passthrough for telemetry purposes
+-    "continue.defaultQuickAction": async (args: QuickEditShowParams) => {
++    "zodeve.defaultQuickAction": async (args: QuickEditShowParams) => {
+       captureCommandTelemetry("defaultQuickAction");
+-      vscode.commands.executeCommand("continue.focusEdit", args);
++      vscode.commands.executeCommand("zodeve.focusEdit", args);
+     },
+-    "continue.customQuickActionSendToChat": async (
++    "zodeve.customQuickActionSendToChat": async (
+       prompt: string,
+       range: vscode.Range,
+     ) => {
+@@ -214,9 +214,9 @@ const getCommandsMap: (
+ 
+       addCodeToContextFromRange(range, sidebar.webviewProtocol, prompt);
+ 
+-      vscode.commands.executeCommand("continue.continueGUIView.focus");
++      vscode.commands.executeCommand("zodeve.continueGUIView.focus");
+     },
+-    "continue.customQuickActionStreamInlineEdit": async (
++    "zodeve.customQuickActionStreamInlineEdit": async (
+       prompt: string,
+       range: vscode.Range,
+     ) => {
+@@ -224,19 +224,19 @@ const getCommandsMap: (
+ 
+       streamInlineEdit("docstring", prompt, range);
+     },
+-    "continue.codebaseForceReIndex": async () => {
++    "zodeve.codebaseForceReIndex": async () => {
+       core.invoke("index/forceReIndex", undefined);
+     },
+-    "continue.rebuildCodebaseIndex": async () => {
++    "zodeve.rebuildCodebaseIndex": async () => {
+       core.invoke("index/forceReIndex", { shouldClearIndexes: true });
+     },
+-    "continue.docsIndex": async () => {
++    "zodeve.docsIndex": async () => {
+       core.invoke("context/indexDocs", { reIndex: false });
+     },
+-    "continue.docsReIndex": async () => {
++    "zodeve.docsReIndex": async () => {
+       core.invoke("context/indexDocs", { reIndex: true });
+     },
+-    "continue.focusContinueInput": async () => {
++    "zodeve.focusContinueInput": async () => {
+       const isContinueInputFocused = await sidebar.webviewProtocol.request(
+         "isContinueInputFocused",
+         undefined,
+@@ -280,7 +280,7 @@ const getCommandsMap: (
+         void addHighlightedCodeToContext(sidebar.webviewProtocol);
+       }
+     },
+-    "continue.focusContinueInputWithoutClear": async () => {
++    "zodeve.focusContinueInputWithoutClear": async () => {
+       const isContinueInputFocused = await sidebar.webviewProtocol.request(
+         "isContinueInputFocused",
+         undefined,
+@@ -313,22 +313,22 @@ const getCommandsMap: (
+     },
+     // QuickEditShowParams are passed from CodeLens, temp fix
+     // until we update to new params specific to Edit
+-    "continue.focusEdit": async (args?: QuickEditShowParams) => {
++    "zodeve.focusEdit": async (args?: QuickEditShowParams) => {
+       captureCommandTelemetry("focusEdit");
+       focusGUI();
+       sidebar.webviewProtocol?.request("focusEdit", undefined);
+     },
+-    "continue.exitEditMode": async () => {
++    "zodeve.exitEditMode": async () => {
+       captureCommandTelemetry("exitEditMode");
+       editDecorationManager.clear();
+       void sidebar.webviewProtocol?.request("exitEditMode", undefined);
+     },
+-    "continue.generateRule": async () => {
++    "zodeve.generateRule": async () => {
+       captureCommandTelemetry("generateRule");
+       focusGUI();
+       void sidebar.webviewProtocol?.request("generateRule", undefined);
+     },
+-    "continue.writeCommentsForCode": async () => {
++    "zodeve.writeCommentsForCode": async () => {
+       captureCommandTelemetry("writeCommentsForCode");
+ 
+       streamInlineEdit(
+@@ -336,7 +336,7 @@ const getCommandsMap: (
+         "Write comments for this code. Do not change anything about the code itself.",
+       );
+     },
+-    "continue.writeDocstringForCode": async () => {
++    "zodeve.writeDocstringForCode": async () => {
+       captureCommandTelemetry("writeDocstringForCode");
+ 
+       void streamInlineEdit(
+@@ -344,7 +344,7 @@ const getCommandsMap: (
+         "Write a docstring for this code. Do not change anything about the code itself.",
+       );
+     },
+-    "continue.fixCode": async () => {
++    "zodeve.fixCode": async () => {
+       captureCommandTelemetry("fixCode");
+ 
+       streamInlineEdit(
+@@ -352,57 +352,55 @@ const getCommandsMap: (
+         "Fix this code. If it is already 100% correct, simply rewrite the code.",
+       );
+     },
+-    "continue.optimizeCode": async () => {
++    "zodeve.optimizeCode": async () => {
+       captureCommandTelemetry("optimizeCode");
+       streamInlineEdit("optimize", "Optimize this code");
+     },
+-    "continue.fixGrammar": async () => {
++    "zodeve.fixGrammar": async () => {
+       captureCommandTelemetry("fixGrammar");
+       streamInlineEdit(
+         "fixGrammar",
+         "If there are any grammar or spelling mistakes in this writing, fix them. Do not make other large changes to the writing.",
+       );
+     },
+-    "continue.clearConsole": async () => {
++    "zodeve.clearConsole": async () => {
+       consoleView.clearLog();
+     },
+-    "continue.viewLogs": async () => {
++    "zodeve.viewLogs": async () => {
+       captureCommandTelemetry("viewLogs");
+       vscode.commands.executeCommand("workbench.action.toggleDevTools");
+     },
+-    "continue.debugTerminal": async () => {
++    "zodeve.debugTerminal": async () => {
+       captureCommandTelemetry("debugTerminal");
+ 
+       const terminalContents = await ide.getTerminalContents();
+ 
+-      vscode.commands.executeCommand("continue.continueGUIView.focus");
++      vscode.commands.executeCommand("zodeve.continueGUIView.focus");
+ 
+       sidebar.webviewProtocol?.request("userInput", {
+         input: `I got the following error, can you please help explain how to fix it?\n\n${terminalContents.trim()}`,
+       });
+     },
+-    "continue.hideInlineTip": () => {
++    "zodeve.hideInlineTip": () => {
+       vscode.workspace
+         .getConfiguration(EXTENSION_NAME)
+         .update("showInlineTip", false, vscode.ConfigurationTarget.Global);
+     },
+ 
+     // Commands without keyboard shortcuts
+-    "continue.addModel": () => {
++    "zodeve.addModel": () => {
+       captureCommandTelemetry("addModel");
+ 
+-      vscode.commands.executeCommand("continue.continueGUIView.focus");
++      vscode.commands.executeCommand("zodeve.continueGUIView.focus");
+       sidebar.webviewProtocol?.request("addModel", undefined);
+     },
+-    "continue.newSession": () => {
++    "zodeve.newSession": () => {
+       sidebar.webviewProtocol?.request("newSession", undefined);
+     },
+-    "continue.viewHistory": () => {
+-      vscode.commands.executeCommand("continue.navigateTo", "/history", true);
++    "zodeve.viewHistory": () => {
++      vscode.commands.executeCommand("zodeve.navigateTo", "/history", true);
+     },
+-    "continue.focusContinueSessionId": async (
+-      sessionId: string | undefined,
+-    ) => {
++    "zodeve.focusContinueSessionId": async (sessionId: string | undefined) => {
+       if (!sessionId) {
+         sessionId = await vscode.window.showInputBox({
+           prompt: "Enter the Session ID",
+@@ -412,13 +410,13 @@ const getCommandsMap: (
+         sessionId,
+       });
+     },
+-    "continue.applyCodeFromChat": () => {
++    "zodeve.applyCodeFromChat": () => {
+       void sidebar.webviewProtocol.request("applyCodeFromChat", undefined);
+     },
+-    "continue.openConfigPage": () => {
+-      vscode.commands.executeCommand("continue.navigateTo", "/config", false);
++    "zodeve.openConfigPage": () => {
++      vscode.commands.executeCommand("zodeve.navigateTo", "/config", false);
+     },
+-    "continue.selectFilesAsContext": async (
++    "zodeve.selectFilesAsContext": async (
+       firstUri: vscode.Uri,
+       uris: vscode.Uri[],
+     ) => {
+@@ -426,7 +424,7 @@ const getCommandsMap: (
+         throw new Error("No files were selected");
+       }
+ 
+-      vscode.commands.executeCommand("continue.continueGUIView.focus");
++      vscode.commands.executeCommand("zodeve.continueGUIView.focus");
+ 
+       for (const uri of uris) {
+         // If it's a folder, add the entire folder contents recursively by using walkDir (to ignore ignored files)
+@@ -452,25 +450,25 @@ const getCommandsMap: (
+         }
+       }
+     },
+-    "continue.logAutocompleteOutcome": (
++    "zodeve.logAutocompleteOutcome": (
+       completionId: string,
+       completionProvider: CompletionProvider,
+     ) => {
+       completionProvider.accept(completionId);
+     },
+-    "continue.logNextEditOutcomeAccept": (
++    "zodeve.logNextEditOutcomeAccept": (
+       completionId: string,
+       nextEditLoggingService: NextEditLoggingService,
+     ) => {
+       nextEditLoggingService.accept(completionId);
+     },
+-    "continue.logNextEditOutcomeReject": (
++    "zodeve.logNextEditOutcomeReject": (
+       completionId: string,
+       nextEditLoggingService: NextEditLoggingService,
+     ) => {
+       nextEditLoggingService.reject(completionId);
+     },
+-    "continue.toggleTabAutocompleteEnabled": () => {
++    "zodeve.toggleTabAutocompleteEnabled": () => {
+       captureCommandTelemetry("toggleTabAutocompleteEnabled");
+ 
+       const config = vscode.workspace.getConfiguration(EXTENSION_NAME);
+@@ -506,7 +504,7 @@ const getCommandsMap: (
+         }
+       }
+     },
+-    "continue.forceAutocomplete": async () => {
++    "zodeve.forceAutocomplete": async () => {
+       captureCommandTelemetry("forceAutocomplete");
+ 
+       // 1. Explicitly hide any existing suggestion. This clears VS Code's cache for the current position.
+@@ -518,7 +516,7 @@ const getCommandsMap: (
+       );
+     },
+ 
+-    "continue.openTabAutocompleteConfigMenu": async () => {
++    "zodeve.openTabAutocompleteConfigMenu": async () => {
+       captureCommandTelemetry("openTabAutocompleteConfigMenu");
+ 
+       const config = vscode.workspace.getConfiguration(EXTENSION_NAME);
+@@ -604,23 +602,23 @@ const getCommandsMap: (
+             });
+           }
+         } else if (selectedOption === "$(comment) Open chat") {
+-          vscode.commands.executeCommand("continue.focusContinueInput");
++          vscode.commands.executeCommand("zodeve.focusContinueInput");
+         } else if (selectedOption === "$(gear) Open settings") {
+-          vscode.commands.executeCommand("continue.navigateTo", "/config");
++          vscode.commands.executeCommand("zodeve.navigateTo", "/config");
+         }
+ 
+         quickPick.dispose();
+       });
+       quickPick.show();
+     },
+-    "continue.navigateTo": (path: string, toggle: boolean) => {
++    "zodeve.navigateTo": (path: string, toggle: boolean) => {
+       sidebar.webviewProtocol?.request("navigateTo", { path, toggle });
+       focusGUI();
+     },
+-    "continue.startLocalOllama": () => {
++    "zodeve.startLocalOllama": () => {
+       startLocalOllama(ide);
+     },
+-    "continue.installModel": async (
++    "zodeve.installModel": async (
+       modelName: string,
+       llmProvider: ILLM | undefined,
+     ) => {
+@@ -639,7 +637,7 @@ const getCommandsMap: (
+         );
+       }
+     },
+-    "continue.convertConfigJsonToConfigYaml": async () => {
++    "zodeve.convertConfigJsonToConfigYaml": async () => {
+       const configJson = fs.readFileSync(getConfigJsonPath(), "utf-8");
+       const parsed = JSON.parse(configJson);
+       const configYaml = convertJsonToYamlConfig(parsed);
+@@ -668,7 +666,7 @@ const getCommandsMap: (
+           }
+         });
+     },
+-    "continue.enterEnterpriseLicenseKey": async () => {
++    "zodeve.enterEnterpriseLicenseKey": async () => {
+       captureCommandTelemetry("enterEnterpriseLicenseKey");
+ 
+       const licenseKey = await vscode.window.showInputBox({
+@@ -704,7 +702,7 @@ const getCommandsMap: (
+         );
+       }
+     },
+-    "continue.toggleNextEditEnabled": async () => {
++    "zodeve.toggleNextEditEnabled": async () => {
+       captureCommandTelemetry("toggleNextEditEnabled");
+ 
+       const config = vscode.workspace.getConfiguration(EXTENSION_NAME);
+@@ -728,7 +726,7 @@ const getCommandsMap: (
+         vscode.ConfigurationTarget.Global,
+       );
+     },
+-    "continue.forceNextEdit": async () => {
++    "zodeve.forceNextEdit": async () => {
+       captureCommandTelemetry("forceNextEdit");
+ 
+       // This is basically the same logic as forceAutocomplete.
